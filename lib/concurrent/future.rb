@@ -57,7 +57,7 @@ module Concurrent
     #   future.state #=> :pending
     def execute
       if compare_and_set_state(:pending, :unscheduled)
-        @executor.post(@args){work }
+        @executor.post(@args){ work }
         self
       end
     end
