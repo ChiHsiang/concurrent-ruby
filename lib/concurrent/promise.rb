@@ -438,7 +438,7 @@ module Concurrent
     # @!visibility private
     def realize(task)
       @executor.post do
-        success, value, reason = SafeTaskExecutor.new(task).execute(@args)
+        success, value, reason = SafeTaskExecutor.new(task).execute(*@args)
 
         children_to_notify = mutex.synchronize do
           set_state!(success, value, reason)

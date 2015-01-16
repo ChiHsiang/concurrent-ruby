@@ -22,11 +22,11 @@ module Concurrent
       # thread_arguments
 
       def get_ivar_from_no_args
-        Concurrent::Future.execute{|args| args }
+        Concurrent::Future.execute{|*args| args }
       end
 
       def get_ivar_from_args(opts)
-        Concurrent::Future.execute(opts){|args| args }
+        Concurrent::Future.execute(opts){|*args| args }
       end
 
       it_should_behave_like :thread_arguments

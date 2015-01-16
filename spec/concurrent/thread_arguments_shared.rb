@@ -35,13 +35,13 @@ shared_examples :thread_arguments do
 
   it 'passes the given array when the :args key has a complex array value' do
     expected = [(1..10).to_a, (20..30).to_a, (100..110).to_a]
-    future = Concurrent::Future.execute(args: expected){|args| args }
+    future = get_ivar_from_args(args: expected)
     expect(future.value).to eq expected
   end
 
   it 'allows the given arguments array to be dereferenced' do
     expected = [1, 2, 3, 4]
-    future = Concurrent::Future.execute(args: expected){|one, two, three, four| [one, two, three, four] }
+    future = get_ivar_from_args(args: expected)
     expect(future.value).to eq expected
   end
 end

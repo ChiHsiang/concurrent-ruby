@@ -29,11 +29,11 @@ module Concurrent
       # thread_arguments
 
       def get_ivar_from_no_args
-        Concurrent::Promise.execute{|args| args }
+        Concurrent::Promise.execute{|*args| args }
       end
 
       def get_ivar_from_args(opts)
-        Concurrent::Promise.execute(opts){|args| args }
+        Concurrent::Promise.execute(opts){|*args| args }
       end
 
       it_should_behave_like :thread_arguments
